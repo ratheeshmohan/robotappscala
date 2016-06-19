@@ -41,6 +41,7 @@ object ToyRobotApp extends App {
       REPORT"""
   executeCommand(Robot(), (5, 5), strCommands)
 
+
   def executeCommand(robot: Robot, board: (Int, Int), command: String) = {
     Board(board._1, board._2).flatMap(b => robot.assign(b)).map(r =>
       CommandExecutor.execute[Robot](r, StringCommandParser(command).commands))
