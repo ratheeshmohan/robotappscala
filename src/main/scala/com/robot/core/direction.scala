@@ -28,7 +28,7 @@ object Direction extends Enumeration {
 
   implicit def extendDirection(d: Direction.Value): DirectionEx = new DirectionEx(d)
 
-  implicit def tryParseString2Direction(dir: String): Option[Direction.Value] = dir.toUpperCase match {
+  implicit def parseString2Direction(dir: String) : Option[Direction.Value] = dir.toUpperCase match {
     case "NORTH" => Some(Direction.North)
     case "EAST" => Some(Direction.East)
     case "SOUTH" => Some(Direction.South)
