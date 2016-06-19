@@ -9,7 +9,7 @@ object BoardSpec extends Properties("Board") {
   val positiveIntegers = Gen.choose(1, 1000)
   val integers = Arbitrary.arbitrary[Int]
 
-  property("should be always be create using valid rows and columns") = forAll { (a: Int, b: Int) =>
+  property("should be able to create always using valid rows and columns") = forAll { (a: Int, b: Int) =>
     if (a <= 0 || b <= 0) Board(a, b).isLeft else Board(a, b).isRight
   }
 
@@ -21,7 +21,7 @@ object BoardSpec extends Properties("Board") {
       Board(r, c).map(!_.contains(Point(x, y))).getOrElse(false)
   }
 
-  property("must always return the location of Point(x,y)") = forAll(positiveIntegers,
+  property("must always return the location of coordinate(x,y)") = forAll(positiveIntegers,
     positiveIntegers, integers, integers) { (r: Int, c: Int, x: Int, y: Int) =>
     if ((x >= 0 && x < c) && (y >= 0 && y < r))
       Board(r, c).foldRight(true)((a, z) => a.getAt(x, y).isDefined && z)
