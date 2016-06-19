@@ -1,1 +1,1 @@
-A robot app simular in scala
+A toy robot app simulator in scala
