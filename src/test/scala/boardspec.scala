@@ -13,7 +13,7 @@ object BoardSpec extends Properties("Board") {
     if (a <= 0 || b <= 0) Board(a, b).isLeft else Board(a, b).isRight
   }
 
-  property("must always return the existance of valid points") = forAll(positiveIntegers,
+  property("must always return the (non)existance of valid points") = forAll(positiveIntegers,
     positiveIntegers, integers, integers) { (r: Int, c: Int, x: Int, y: Int) =>
     if ((x >= 0 && x < c) && (y >= 0 && y < r))
       Board(r, c).map(_.contains(Point(x, y))).getOrElse(false)
@@ -21,7 +21,7 @@ object BoardSpec extends Properties("Board") {
       Board(r, c).map(!_.contains(Point(x, y))).getOrElse(false)
   }
 
-  property("must always return the location of coordinate(x,y)") = forAll(positiveIntegers,
+  property("must(not) return the location of (in)valid coordinates(x,y)") = forAll(positiveIntegers,
     positiveIntegers, integers, integers) { (r: Int, c: Int, x: Int, y: Int) =>
     if ((x >= 0 && x < c) && (y >= 0 && y < r))
       Board(r, c).foldRight(true)((a, z) => a.getAt(x, y).isDefined && z)

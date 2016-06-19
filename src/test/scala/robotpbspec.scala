@@ -7,7 +7,7 @@ import org.scalacheck.Gen
 
 import scalaz.\/
 
-object RobotPBSpec extends Properties("RobotAction") {
+object RobotPBSpec extends Properties("RobotActions") {
 
   val positiveIntegers = Gen.choose(1, 1000)
 
@@ -15,7 +15,7 @@ object RobotPBSpec extends Properties("RobotAction") {
     r.place(Coordinates(Point(1, 1), Direction.North))).
     foldRight(Robot())((a, z) => a)
 
-  property("Move() should move itself only one unit without changing direction") = forAll(robots(2)) {
+  property("Move() should move itself one unit without changing the direction") = forAll(robots(2)) {
     (r: Robot) => {
       r.move().foldRight(true)((a, z) => {
         for {
@@ -28,7 +28,7 @@ object RobotPBSpec extends Properties("RobotAction") {
     }
   }
 
-  property("move robot from x to y then y to x should bring robot back to x") = forAll(robots(1)) {
+  property("Move() robot from x to y then y to x should bring robot back to x") = forAll(robots(1)) {
     (r: Robot) => {
       for {
         r1 <- r.move()
@@ -44,7 +44,7 @@ object RobotPBSpec extends Properties("RobotAction") {
     }.foldRight(true)((a, z) => a && z)
   }
 
-  property("move robot from x -> y -> z & z -> y -> x should have similar start/end coordinates ") = forAll(robots(2)) {
+  property("Move() robot from x -> y -> z & z -> y -> x should have similar start/end coordinates ") = forAll(robots(2)) {
     (r: Robot) => {
       for {
         r1 <- r.move()
@@ -70,7 +70,7 @@ object RobotPBSpec extends Properties("RobotAction") {
     (r: Robot) => testcyclicmovement(r, _.turnLeft(Degrees.Ninety))
   }
 
-  property("outward move of robot on borders should ignore") = forAll { (d: Int) => {
+  property("Outward Move() of robot placed on borders should be ignored") = forAll { (d: Int) => {
     testinvalidbordermoves(d, Point(d - 1, d - 1), Direction.North) &&
       testinvalidbordermoves(d, Point(d - 1, d - 1), Direction.East) &&
       testinvalidbordermoves(d, Point(0, 0), Direction.South) &&
