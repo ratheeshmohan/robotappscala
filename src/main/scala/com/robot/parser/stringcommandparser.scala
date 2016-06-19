@@ -1,4 +1,7 @@
-package com.auz.robotappscala
+package com.robot.parser
+
+import com.robot.command._
+import com.robot.core.{Coordinates, Direction, Point, Robot}
 
 case class StringCommandParser(commandLines:String) {
 
@@ -11,11 +14,10 @@ case class StringCommandParser(commandLines:String) {
     case "LEFT" => TurnLeftCommand
     case "RIGHT" => TurnRightCommand
     case "REPORT" => new ReportCommand((x, y, z) => println(s"$x,$y,$z"))
-    case msgPattern(place, x, y, d) => {
+    case msgPattern(place, x, y, d) =>
       val direction: Option[Direction.Value] = d
       direction.map(dir => new PlaceCommand(Coordinates(Point(x.toInt, y.toInt), dir))).
         getOrElse(NullCommand)
-    }
     case _ => NullCommand
   }
 }

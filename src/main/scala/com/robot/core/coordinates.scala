@@ -1,4 +1,4 @@
-package com.auz.robotappscala
+package com.robot.core
 
 /** class defining a point */
 case class Point(x:Int,y:Int) {
@@ -11,8 +11,8 @@ case class Point(x:Int,y:Int) {
 
 case class Coordinates (point:Point,direction:Direction.Value) {
 
-  import Direction._
   import Degrees._
+  import Direction._
   //returns coordinates at x unit away from in same direction
   def atUnits(x: Int) = direction match {
     case North => Option(copy(point.addY(x)))

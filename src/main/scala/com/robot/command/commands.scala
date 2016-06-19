@@ -1,4 +1,5 @@
-package com.auz.robotappscala
+package com.robot.command
+import com.robot.core._
 
 import scalaz.\/
 
@@ -16,7 +17,7 @@ object Command {
 }
 
 object MoveCommand extends Command[Robot] {
-  def execute(robot: Robot): Robot = Command.execute[Robot](robot, _.move)
+  def execute(robot: Robot): Robot = Command.execute[Robot](robot, _.move())
 }
 
 object TurnLeftCommand extends Command[Robot] {

@@ -1,4 +1,4 @@
-package com.auz.robotappscala
+package com.robot.core
 
 import scalaz.\/
 
@@ -8,9 +8,9 @@ import scalaz.\/
   * This class is expecting a strategy to handle movement of robot
   */
 
- case class Robot(val board:Option[Board] = None,
-                 val coordinate:Option[Coordinates] = None,
-                 val motionStrategy: MovingStyle[Robot] = new SimpleMove) {
+ case class Robot(board:Option[Board] = None,
+                  coordinate:Option[Coordinates] = None,
+                  motionStrategy: MovingStyle[Robot] = new SimpleMove) {
 
   import Degrees._
 

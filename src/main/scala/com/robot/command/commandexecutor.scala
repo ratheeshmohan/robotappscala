@@ -1,4 +1,4 @@
-package com.auz.robotappscala
+package com.robot.command
 
 object  CommandExecutor {
   def execute[T](item: T,

@@ -1,4 +1,4 @@
-package com.auz.robotappscala
+package com.robot.core
 
 import scalaz.\/
 

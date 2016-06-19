@@ -1,6 +1,8 @@
-package com.auz.robotappscala
+package com.robot
 
-
+import com.robot.command.CommandExecutor
+import com.robot.core.{Board, Robot}
+import com.robot.parser.StringCommandParser
 
 object ToyRobotApp extends App {
 

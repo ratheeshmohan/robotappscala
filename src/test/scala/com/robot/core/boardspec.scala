@@ -1,8 +1,7 @@
-package com.auz.robotappscala
+package com.robot.core
 
-import org.scalacheck.Properties
 import org.scalacheck.Prop.forAll
-import org.scalacheck.{Arbitrary, Gen}
+import org.scalacheck.{Arbitrary, Gen, Properties}
 
 object BoardSpec extends Properties("Board") {
 

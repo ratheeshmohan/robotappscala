@@ -1,4 +1,4 @@
-package com.auz.robotappscala
+package com.robot.core
 
 object Degrees extends Enumeration {
   type Degrees = Value
